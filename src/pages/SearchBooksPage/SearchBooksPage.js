@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { searchBooks } from "../../utilities/search-api";
+import { addBook, searchBooks } from "../../utilities/book-api";
 import BookCard from "../../components/BookCard/BookCard";
 
 export default function SearchBooksPage() {
@@ -28,7 +28,7 @@ export default function SearchBooksPage() {
       <button onClick={handleClick}>Search</button>
       <div className="searchResults">
         {books.map((book) => {
-          return <BookCard book={book} key={book.googleid}/>
+          return <BookCard book={book} key={book.googleid} textButton="Add to BookList" handleClick={addBook} loading="adding..." success="added"/>
         })}
       </div>
     </div>
