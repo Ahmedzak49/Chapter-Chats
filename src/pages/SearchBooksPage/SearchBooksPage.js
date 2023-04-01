@@ -5,6 +5,7 @@ import BookCard from "../../components/BookCard/BookCard";
 export default function SearchBooksPage() {
   const [searchTerm, setSeearchTerm] = useState("");
   const [books, setBooks] = useState([]);
+
   const handleClick = async () => {
     const bookResult = await searchBooks({searchTerm: searchTerm})
     // title, authors, summary, image, subtitle
@@ -28,7 +29,7 @@ export default function SearchBooksPage() {
       <button onClick={handleClick}>Search</button>
       <div className="searchResults">
         {books.map((book) => {
-          return <BookCard book={book} key={book.googleid} textButton="Add to BookList" handleClick={addBook} loading="adding..." success="added"/>
+          return <BookCard book={book} key={book.googleid} textButton="Add to BookList" loading="adding..." success="added"/>
         })}
       </div>
     </div>

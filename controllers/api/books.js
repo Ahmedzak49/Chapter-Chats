@@ -1,5 +1,6 @@
 const axios = require("axios");
 const User = require("../../models/user");
+const Book = require('../../models/book');
 
 
 const googleSearchBooks = async (req, res) => {
@@ -12,40 +13,29 @@ const googleSearchBooks = async (req, res) => {
 };
 
 const addNewBook = async (req, res) => {
-    try {
-        const updatedUser = await User.findByIdAndUpdate(req.user._id, {
-            $push:{
-                bookList: req.body
-            }
-        }, {new: true});
-        res.json(updatedUser);
-
-    } catch (err) {
-        console.log(err);
-        res.status(500).json(err);
+    const book = await Book.findOne({googleid: req.body.googleid});
+    if (book) {
+        if (book.users.includes(req.user._id)){
+            book.users.remove(req.user._id)
+        } else {
+            book.users.push(req.user._id)
+        }
+        await book.save();
+        res.json(book);
+    } else {
+        req.body.users = req.user._id;
+        const addBook = await Book.create(req.body)
+        await addBook.save();
+        res.json(addBook);
     }
-
+    console.log(req.body);
 };
-const removeBook = async (req, res) => {
-    try {
-        const updatedUser = await User.findByIdAndUpdate(req.user._id, {
-            $pull:{
-                bookList: {_id: req.params.id}
-            }
-        }, {new: true});
-        res.json(updatedUser);
 
-    } catch (err) {
-        console.log(err);
-        res.status(500).json(err);
-    }
-
-};
 
 const getUserBooks = async (req, res) => {
     try {
-        const user = await User.findById(req.user._id)
-        res.json(user.bookList);
+        const books = await Book.find({users: req.user._id})
+        res.json(books);
 
     } catch (err) {
         console.log(err);
@@ -54,4 +44,4 @@ const getUserBooks = async (req, res) => {
 
 };
 
-module.exports = {googleSearchBooks, addNewBook, getUserBooks, removeBook};
+module.exports = {googleSearchBooks, addNewBook, getUserBooks};

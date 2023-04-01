@@ -1,16 +1,22 @@
 import { addBook } from "../../utilities/book-api";
 import {useState} from "react";
 
-const BookCard = ({ book, textButton, handleClick, loading, success }) => {
+const BookCard = ({ book, textButton, isBookList, loading, success, bookList, setBook }) => {
     const [added, setAdded] = useState(false)
     const [buttonText, setButtonText] = useState(textButton)
     const handleAddBook = async() => {
         setButtonText(loading)
         console.log('clicked')
         try {
-            const addedBook = await handleClick(book)
+            const addedBook = await addBook(book)
             console.log('book added', addedBook);
-            setAdded(true)
+            if (isBookList) {
+                setAdded(false)
+
+                setBook(addBook)
+            } else (
+                setAdded(true)
+            )
             setButtonText(success)
         } catch (err) {
             console.log('add book error',err)
@@ -22,7 +28,7 @@ const BookCard = ({ book, textButton, handleClick, loading, success }) => {
             <h3>{book.title}: {book.subtitle}</h3>
             <div className="bookCardBottom">
             <p> Authored by:{book.authors.join(', ')}</p>
-            <button onClick={handleAddBook} disabled={added}>{buttonText}</button>
+            <button onClick={handleAddBook} disabled={added} >{isBookList?"remove":buttonText}</button>
             </div>
         </div>
     )

@@ -3,20 +3,7 @@ const Schema = mongoose.Schema;
 const bcrypt = require('bcrypt');
 
 const SALT_ROUNDS = 6;
-const bookSchema = new Schema({
-  title: String,
-  googleid: {
-    type: String,
-    unique: true,
-  },
-  subtitle: String,
-  authors: [String],
-  description: String,
-  image: {
-    type: String,
-    default: "https://bookstoreromanceday.org/wp-content/uploads/2020/08/book-cover-placeholder.png",
-  }
-});
+
 
 const userSchema = new Schema({
   name: {type: String, required: true},
@@ -31,7 +18,6 @@ const userSchema = new Schema({
     type: String,
     required: true
   },
-  bookList: [bookSchema]
 }, {
   timestamps: true,
   toJSON: {
@@ -49,4 +35,4 @@ userSchema.pre('save', async function(next) {
   this.password = await bcrypt.hash(this.password, SALT_ROUNDS);
 });
 
-module.exports = mongoose.model('User', userSchema);``
+module.exports = mongoose.model('User', userSchema);

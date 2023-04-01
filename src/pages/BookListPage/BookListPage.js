@@ -1,22 +1,24 @@
 import BookCard from "../../components/BookCard/BookCard";
-import { getUserBooks, removeBook } from "../../utilities/book-api";
+import { getUserBooks } from "../../utilities/book-api";
 import { useEffect, useState } from "react";
 
 export default function MyBookListPage() {
   const [bookList, setBookList] = useState([]);
+  const [book, setBook] = useState({});
 
   useEffect(() => {
     getUserBooks()
     .then((result) => {
       setBookList(result);
     })
-  }, [])
+  }, [book])
+  console.log('bookListPage');
   return (
     <div>
       <h1>My Book List</h1>
     {bookList.length > 0 ? (
       <div className="bookListContainer">
-      {bookList.map((book) => <BookCard book={book} key={book.googleid} textButton="DELETE" handleClick={removeBook} loading="removing..." success="removed"/>)}
+      {bookList.map((book) => <BookCard book={book} key={book.googleid} textButton="DELETE"  loading="removing..." success="removed" isBookList={true} bookList={bookList} setBook={setBook} />)}
       </div>
     ) : <p>no books Added</p>}
     </div>
