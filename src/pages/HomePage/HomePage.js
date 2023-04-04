@@ -2,8 +2,7 @@
 export default function HomePage() {
   return (
     <div>
-      <h1>Welcome to My Bookstore!</h1>
-      <p>This is the homepage of our website.</p>
+      <h1 className="title">Welcome to Chapter chats!</h1>
     </div>
   );
 }

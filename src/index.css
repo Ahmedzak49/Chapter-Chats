@@ -151,3 +151,155 @@ button[type="submit"] {
   grid-column: span 2;
   margin: 1vmin 0 0;
 }
+
+body {
+  background-image: url("https://img.freepik.com/free-photo/abstract-luxury-gradient-blue-background-smooth-dark-blue-with-black-vignette-studio-banner_1258-63998.jpg?w=2000");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  background-attachment: fixed;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.App .NavBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  height: 80px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+  padding: 0px 20px;
+}
+
+.App .NavBar-brand {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333333;
+  text-decoration: none;
+}
+
+.App .NavBar-brand:hover {
+  color: #00a0e9;
+}
+
+.App .NavBar-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.App .NavBar-links a {
+  color: #333333;
+  text-decoration: none;
+  margin-right: 20px;
+  font-size: 16px;
+}
+
+.App .NavBar-links a:hover {
+  color: #00a0e9;
+}
+
+@media only screen and (max-width: 768px) {
+  .App .NavBar-links {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .App .NavBar-links a {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.App nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  height: 80px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+  padding: 0px 20px;
+}
+
+.App nav ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.App nav ul li {
+  margin-right: 20px;
+}
+
+.App nav ul li:last-child {
+  margin-right: 0;
+}
+
+.App nav ul li a {
+  color: #333333;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.App nav ul li a:hover {
+  color: #00a0e9;
+}
+
+.App nav ul li button {
+  background-color: #ffffff;
+  border: none;
+  color: #333333;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.App nav ul li button:hover {
+  color: #00a0e9;
+}
+
+.title {
+  font-size: 48px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #f44336; /* use any color you like */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* add a subtle text shadow */
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+.BookList {
+  color: #f44336; /* use any color you like */
+
+}
+
+.Forum {
+  color: black/
+
+}
+
+.postBtl{
+  width: 420px;
+}
+
+.PostBRD {
+  border: 5px solid black; /* set the border style and color */
+  padding: 10px; /* add some padding within the post element */
+  margin-bottom: 20px; /* add some spacing between the post elements */
+}

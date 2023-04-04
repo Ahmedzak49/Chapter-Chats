@@ -13,10 +13,12 @@ const BookCard = ({ book, textButton, isBookList, loading, success, bookList, se
             if (isBookList) {
                 setAdded(false)
 
-                setBook(addBook)
+                setBook(addedBook)
             } else (
                 setAdded(true)
-            )
+
+                )
+                setBook(addedBook);
             setButtonText(success)
         } catch (err) {
             console.log('add book error',err)

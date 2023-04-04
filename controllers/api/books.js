@@ -17,6 +17,7 @@ const addNewBook = async (req, res) => {
     if (book) {
         if (book.users.includes(req.user._id)){
             book.users.remove(req.user._id)
+            console.log("deletedBook", book);
         } else {
             book.users.push(req.user._id)
         }
@@ -36,7 +37,7 @@ const getUserBooks = async (req, res) => {
     try {
         const books = await Book.find({users: req.user._id})
         res.json(books);
-
+        console.log(books);
     } catch (err) {
         console.log(err);
         res.status(500).json(err);

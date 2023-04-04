@@ -7,20 +7,21 @@ export default function MyBookListPage() {
   const [book, setBook] = useState({});
 
   useEffect(() => {
-    getUserBooks()
-    .then((result) => {
-      setBookList(result);
-    })
+    async function getBooks() {
+      const books = await getUserBooks()
+      setBookList(books)
+    }
+    getBooks();
   }, [book])
   console.log('bookListPage');
   return (
     <div>
-      <h1>My Book List</h1>
+      <h1 className="BookList">My Book List</h1>
     {bookList.length > 0 ? (
       <div className="bookListContainer">
       {bookList.map((book) => <BookCard book={book} key={book.googleid} textButton="DELETE"  loading="removing..." success="removed" isBookList={true} bookList={bookList} setBook={setBook} />)}
       </div>
-    ) : <p>no books Added</p>}
+    ) : <p className="bookL">no books Added</p>}
     </div>
   );
 }

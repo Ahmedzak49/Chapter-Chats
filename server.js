@@ -27,7 +27,8 @@ app.use(require('./config/checkToken'));
 const port = process.env.PORT || 3001;
 
 // Put API routes here, before the "catch all" route
-app.use('/api', require('./routes'));
+app.use('/api/post', require('./routes/api/post'));
+app.use('/api/books', require('./routes/api/books'));
 
 
 // The following "catch all" route (note the *) is necessary
@@ -39,4 +40,3 @@ app.get('/*', function(req, res) {
 app.listen(port, function() {
   console.log(`Express app running on port ${port}`);
 });
-

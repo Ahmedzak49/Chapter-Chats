@@ -26,7 +26,7 @@ useEffect(() => {
   };
 
   return (
-    <div>
+    <div className="Forum">
       <h1>Forum</h1>
       <form onSubmit={handleSubmit}>
         <div>
@@ -37,11 +37,11 @@ useEffect(() => {
           <label htmlFor="body">Body:</label>
           <textarea id="body" value={body} onChange={(e) => setBody(e.target.value)} />
         </div>
-        <button type="submit">Create Post</button>
+        <button type="submit" className="postBtl">Create Post</button>
       </form>
       {
         posts.map((p, idx) =>(
-          <div key={idx}>
+          <div key={idx} className="PostBRD">
             <h3>{p.title}</h3>
             <p>{p.body}</p>
             <p>{p.user.name}</p>
