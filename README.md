@@ -88,7 +88,7 @@ Getting started with Chapter chats is easy! Here's how to use this app to find a
 
 ## :rotating_light: Planned Features
 
-[:x:] AAU, I would like to see some recommendations of books show up while searching for a book.<br>
+[:x:] AAU, I would like to see some recommendations of books while searching for a book.<br>
 [:x:] AAU, I would like to write a review on books that I have read.<br>
 [:x:] AAU, I would like to be able to rate the books as well.<br>
 [:x:] AAU, Search functionality within seller/shopper dashboard.<br>
